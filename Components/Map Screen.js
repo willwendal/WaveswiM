@@ -17,7 +17,7 @@ export default function MapScreen() {
       }
     })
     .then((response) => response.json())
-    .then((jsonData) => { setData(jsonData) });     //console logged data here and its working
+    .then((jsonData) => { setMarineWeather(jsonData) });   
   })
   
   return (
@@ -26,7 +26,7 @@ export default function MapScreen() {
       <FlatList 
         data = {marineWeather}
         renderItem = { ({item}) => (
-          <Text>{item.name}</Text>
+          <Text>{item}</Text>
         )}
       />
     </View> 
