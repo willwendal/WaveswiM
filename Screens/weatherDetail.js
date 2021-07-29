@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 
-export default function MapScreen() {
+export default function WeatherDetail() {
 
   
   return (

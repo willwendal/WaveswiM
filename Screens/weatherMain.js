@@ -6,7 +6,7 @@ const lat = 58.7984;
 const lng = 17.8081;
 const params = 'waveHeight,airTemperature';
 
-export default function MapScreen() {
+export default function WeatherMain() {
 
   const [marineWeather, setMarineWeather] = useState([]);
 
