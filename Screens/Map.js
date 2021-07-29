@@ -1,10 +1,13 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Pressable, Button, StyleSheet, Text, View } from 'react-native';
 
 
 
-export default function Map() {
+export default function Map({ navigation }) {
 
+  const onPressHandler = () => {
+    navigation.navigate("WeatherMain");
+  }
   
   return (
   
@@ -12,8 +15,13 @@ export default function Map() {
       <View>
       <Text>Map Screen</Text>
       </View>
-      <View>
-        <Button title={'Generate Weather'}/>
+      <View style={styles.button}>
+        <Pressable>
+          <Button 
+          title={'Generate Weather'}
+          onPress={ onPressHandler }
+          />
+        </Pressable>
       </View>
     </View> 
     
@@ -28,4 +36,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button: {
+    marginTop: 20,
+  }
 });
