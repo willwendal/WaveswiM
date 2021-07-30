@@ -1,5 +1,6 @@
 import React from 'react';
-import { Pressable, Button, StyleSheet, Text, View } from 'react-native';
+import MapView from 'react-native-maps';
+import { Pressable, Button, StyleSheet, Text, View, Dimensions } from 'react-native';
 
 
 
@@ -8,12 +9,21 @@ export default function Map({ navigation }) {
   const onPressHandler = () => {
     navigation.navigate("WeatherMain");
   }
+
+
   
   return (
   
     <View style={styles.container}>
-      <View>
-      <Text>Map Screen</Text>
+      <View style={styles.container}>
+        <MapView style={styles.map} 
+            initialRegion={{
+            latitude: 41.253009,
+            longitude: 2.189291,
+            latitudeDelta: 3.15108,
+            longitudeDelta: 3.1215,
+          }}
+        />
       </View>
       <View style={styles.button}>
         <Pressable>
@@ -38,5 +48,9 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
-  }
+  },
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
 });
