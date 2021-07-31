@@ -11,14 +11,6 @@ for (let i = 0; i <= daysRequired; i++) {
 }
 
 
-const lat = 41.376700;
-const lng = 2.193972;
-const params = 'airTemperature';
-const start = '2021-07-31';
-const end = '2021-08-01';
-const API_URL = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}&start=${start}&end=${end}`;
-
-
 export default function WeatherMain({ navigation }) {
 
   const renderItem = ({ item }) => {
@@ -104,23 +96,4 @@ const styles = StyleSheet.create({
 
 
 
-{/* <FlatList
-            style={styles.weatherBarRight} 
-            data={ marineWeather }
-            keyExtractor={(item) => item.time}
-            renderItem={ renderItem }
-          />  */}
 
-          // const [marineWeather, setMarineWeather] = useState([]);
-
-          // useEffect(() => {
-        
-          //   fetch( API_URL, {
-          //     headers: {
-          //       'Authorization': "api key",
-          //     }
-          //   }
-          // )
-          //   .then((response) => (response.json()))
-          //   .then((jsonData) => { console.log(jsonData.hours), setMarineWeather(jsonData.hours) })
-          // },[])

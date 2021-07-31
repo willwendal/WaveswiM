@@ -14,7 +14,9 @@ export default function WeatherDetail() {
         style={{width: '100%', height: '100%'}}
       > 
       <View>
-        <Text>Weather Details</Text>
+      <Text style={styles.header}>Barcelona
+            28°C
+          </Text>
       </View>
       </ImageBackground>
     </View> 
@@ -30,4 +32,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  header: {
+    padding: 90,
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 30,
+  },
 });
+
+
+{/* <FlatList
+            style={styles.weatherBarRight} 
+            data={ marineWeather }
+            keyExtractor={(item) => item.time}
+            renderItem={ renderItem }
+          />  */}
+
+          // const [marineWeather, setMarineWeather] = useState([]);
+
+          // useEffect(() => {
+        
+          //   fetch( API_URL, {
+          //     headers: {
+          //       'Authorization': "api key",
+          //     }
+          //   }
+          // )
+          //   .then((response) => (response.json()))
+          //   .then((jsonData) => { console.log(jsonData.hours), setMarineWeather(jsonData.hours) })
+          // },[])
