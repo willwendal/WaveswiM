@@ -1,24 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View, ImageBackground } from 'react-native';
+
+const moment = require('moment');
+
+let days = [];
+let daysRequired = 6
+
+for (let i = 0; i <= daysRequired; i++) {
+  days.push( moment().add(i, 'days').format('dddd, Do MMMM') )
+}
 
 
 const lat = 41.376700;
 const lng = 2.193972;
-const params = 'visibility';
-const start = '2021-07-29';
-const end = '2021-07-30';
+const params = 'cloudCover';
+const start = '2021-07-31';
+const end = '2021-08-01';
 const API_URL = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}&start=${start}&end=${end}`;
 
-const image = { uri: "https://docs.expo.io/static/images/tutorial/splash.png" };
 
 export default function WeatherMain() {
 
   const renderItem = ({ item }) => {
-    return <Text style={styles.weatherBar}> {item.visibility.sg} </Text>
-            
-        
-  }
+
+  
+    return <Text style={styles.weatherBar}> 
+              {item.cloudCover.sg} 
+            </Text>       
+}
 
   const [marineWeather, setMarineWeather] = useState([]);
 
@@ -26,14 +35,16 @@ export default function WeatherMain() {
 
     fetch( API_URL, {
       headers: {
-        'Authorization': "703528bc-ead9-11eb-80d0-0242ac130002-7035292a-ead9-11eb-80d0-0242ac130002"
+        'Authorization': .env,
       }
     }
   )
     .then((response) => (response.json()))
-    .then((jsonData) => { console.log(jsonData), setMarineWeather(jsonData.hours) })
+    .then((jsonData) => { console.log(jsonData.hours), setMarineWeather(jsonData.hours) })
+    
   },[])
 
+  
   
   return (
   
@@ -46,13 +57,13 @@ export default function WeatherMain() {
           <Text style={styles.header}>Barcelona
             28°C
           </Text>
-          {/* <Text>28°C</Text> */}
         
-        <FlatList 
-          data={ marineWeather }
-          keyExtractor={(item) => item.time}
-          renderItem={ renderItem }
-          />
+        <View>
+          {days.map((day) => {
+            return <Text>{day}</Text>
+          })}
+          
+        </View>
       </ImageBackground>
     </View> 
   );
@@ -71,11 +82,9 @@ const styles = StyleSheet.create({
   header: {
     padding: 100,
     textAlign: 'center',
-    fontFamily: ''
   },
   weatherBar: {
     textAlign: 'right',
     padding: 20,
-    fontFamily: "Cochin",
   }
 });
