@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Button, StyleSheet, Text, View } from 'react-native';
+import { Pressable, Button, StyleSheet, Text, View, ImageBackground } from 'react-native';
 
 export default function Home({ navigation }) {
 
@@ -10,17 +10,24 @@ const onPressHandler = () => {
   return (
   
     <View style={styles.container}>
-      <View>
-      <Text>Welcome to Wave swiM</Text>
+      <ImageBackground
+        source={require('../assets/waveswim_background.png')}
+        style={{width: '100%', height: '100%'}}
+      >
+      
+      <View style={styles.header}>
+      <Text style={{fontSize: 40, color: 'white'}}>Wave swiM</Text>
       </View>
       <View style={styles.button}>
         <Pressable>
           <Button 
+            style={styles.button}
             title={ 'Let\'s Go' } 
             onPress={ onPressHandler }
           />
         </Pressable> 
       </View>
+      </ImageBackground>
     </View> 
     
 
@@ -35,6 +42,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    marginTop: 20,
+    alignItems: 'center',
+    marginTop: 350
+  },
+  header: {
+    alignItems: 'center',
+    marginTop: 100,
   }
 });

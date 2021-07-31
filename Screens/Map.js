@@ -30,10 +30,10 @@ export default function Map({ navigation }) {
 
   
   return (
-  <View>
-    <View style={styles.container}>
+  <View style={styles.container}>
+    <View>
         
-         <MapView style={styles.map} 
+        <MapView style={styles.map} 
             initialRegion={{
             latitude: 41.253009,
             longitude: 2.189291,
@@ -42,22 +42,21 @@ export default function Map({ navigation }) {
           }}>
             <Marker coordinate={{ latitude: 41.253009, longitude: 2.189291 }} 
                     show={{show: false}} 
-                    // onPress={ togglePin } 
+                    onPress={ onPressHandler } 
                     style={styles.marker} />
-          </MapView>
-      </View> 
+        </MapView>
+    </View> 
       
-      <View>
+      <View style={styles.button}>
         <Pressable>
           <Button 
           title={'Generate Weather'}
           onPress={ onPressHandler }
           />
         </Pressable>
-      
       </View> 
       
-      </View>
+  </View>
     
 
   );
