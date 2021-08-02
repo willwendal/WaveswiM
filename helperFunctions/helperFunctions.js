@@ -1,15 +1,20 @@
 const dataAverager = (item) => {
-  let average = 0
-  let count = 0
+
+  let averageVis = 0;
+  let averageWaterTemp = 0;
+  let count = 0;
 
   item.forEach((hourlyData) => {
-    average += hourlyData.visibility.sg,
+    averageVis += hourlyData.visibility.sg,
+    averageWaterTemp += hourlyData.waterTemperature.sg
     count++
   })
 
-  average = average / count
-  average = average.toFixed(2);
-  return { average }
+  averageVis = averageVis / count;
+  averageVis = averageVis.toFixed(2);
+  averageWaterTemp = averageWaterTemp / count;
+  averageWaterTemp = averageWaterTemp.toFixed(2);
+  return { averageVis, averageWaterTemp }
 }
 
 export { dataAverager }

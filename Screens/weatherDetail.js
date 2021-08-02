@@ -8,9 +8,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 const lat = 41.376700
 const lng = 2.193972
-const params = 'visibility'
+const params = 'visibility,waterTemperature';
 const start = '2021-08-02'
-const end = '2021-08-04'
+const end = '2021-08-03'
 const API_URL = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}&start=${start}&end=${end}`
 
 const keyGenerator = uuidv4().toString();
@@ -19,7 +19,8 @@ export default function WeatherDetail () {
   const renderItem = ({ item }) => {
    return  (
       <View key={keyGenerator}>
-        <Text> {item.average} </Text>
+        <Text> {item.averageVis} </Text>
+        <Text> {item.averageWaterTemp} </Text>
       </View>
     )
   }
@@ -35,14 +36,12 @@ export default function WeatherDetail () {
     )
       .then((response) => (response.json()))
       .then((jsonData) => {
-        console.log(jsonData)
         const dataAverage = dataAverager(jsonData.hours)
+        console.log(dataAverage)
         setMarineWeather([dataAverage])
       })
       .catch((err) => { err.message })
   }, [])
-
-console.log('marineWeather -> ' , marineWeather);
 
 
   return (
