@@ -1,35 +1,24 @@
 import { StatusBar } from 'expo-status-bar'
-import React, { useState, useEffect } from 'react'
-import { FlatList, StyleSheet, Text, View, ImageBackground } from 'react-native'
-import { dataAverager } from '../helperFunctions/helperFunctions'
-import { EXPO_APIKEY } from '@env'
+import React, { useState, useEffect } from 'react';
+import { FlatList, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { dataAverager } from '../helperFunctions/helperFunctions';
+import { EXPO_APIKEY } from '@env';
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 
 const lat = 41.376700
 const lng = 2.193972
 const params = 'visibility'
-const start = '2021-07-31'
-const end = '2021-08-01'
+const start = '2021-08-02'
+const end = '2021-08-04'
 const API_URL = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}&start=${start}&end=${end}`
 
-const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-  },
-];
+const keyGenerator = uuidv4().toString();
 
 export default function WeatherDetail () {
   const renderItem = ({ item }) => {
    return  (
-      <View>
+      <View key={keyGenerator}>
         <Text> {item.average} </Text>
       </View>
     )
@@ -46,13 +35,15 @@ export default function WeatherDetail () {
     )
       .then((response) => (response.json()))
       .then((jsonData) => {
+        console.log(jsonData)
         const dataAverage = dataAverager(jsonData.hours)
         setMarineWeather([dataAverage])
       })
       .catch((err) => { err.message })
   }, [])
 
-  console.log('------jhhh---', marineWeather.average)
+console.log('marineWeather -> ' , marineWeather);
+
 
   return (
     <View style={styles.container}>
@@ -70,7 +61,7 @@ export default function WeatherDetail () {
         <View style={styles.weatherBarRight}>
         <FlatList
           data={marineWeather}
-          keyExtractor={(item) => item.time}
+          keyExtractor={(item) => item}
           renderItem={renderItem}
         />
         </View>
