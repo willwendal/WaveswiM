@@ -36,9 +36,10 @@ export default function WeatherMain({ navigation }) {
           </Text>
       <View style={styles.weatherBar}>
         <View style={styles.weatherBarLeft}>
-          {days.map((day) => {
+          {days.map((day, index) => {
           return <Pressable>
                 <Text style={styles.weatherBarText}
+                    key={index}
                     onPress={onPressHandler}
                 >
                   {day}

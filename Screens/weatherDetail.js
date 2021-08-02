@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { dataAverager } from '../helperFunctions/helperFunctions';
 
 const lat = 41.376700;
 const lng = 2.193972;
-const params = 'airTemperature';
+const params = 'visibility';
 const start = '2021-07-31';
 const end = '2021-08-01';
 const API_URL = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}&start=${start}&end=${end}`;
@@ -12,7 +13,22 @@ const API_URL = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng
 
 export default function WeatherDetail() {
 
-  
+  const [marineWeather, setMarineWeather] = useState({});
+
+  useEffect(() => {
+        
+            fetch( API_URL, {
+              headers: {
+                'Authorization': "703528bc-ead9-11eb-80d0-0242ac130002-7035292a-ead9-11eb-80d0-0242ac130002",
+              }
+            }
+          )
+            .then((response) => (response.json()))
+            .then((jsonData) => { console.log('function return', dataAverager(jsonData.hours)) })
+            .then((dataAveraged) => { console.log('-------', dataAveraged), setMarineWeather(averagedData) })
+            .catch((err) => {err.message})
+          },[])
+
   return (
   
     <View style={styles.container}>
@@ -55,16 +71,4 @@ const styles = StyleSheet.create({
             renderItem={ renderItem }
           />  */}
 
-          // const [marineWeather, setMarineWeather] = useState([]);
-
-          // useEffect(() => {
-        
-          //   fetch( API_URL, {
-          //     headers: {
-          //       'Authorization': "api key",
-          //     }
-          //   }
-          // )
-          //   .then((response) => (response.json()))
-          //   .then((jsonData) => { console.log(jsonData.hours), setMarineWeather(jsonData.hours) })
-          // },[])
+          
