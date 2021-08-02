@@ -1,9 +1,9 @@
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import Map from '../screens/map';
-import WeatherMain from '../screens/weatherMain';
-import WeatherDetail from '../screens/weatherDetail';
-import Home from '../screens/home';
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+import Map from '../screens/map'
+import WeatherMain from '../screens/weatherMain'
+import WeatherDetail from '../screens/weatherDetail'
+import Home from '../screens/home'
 
 const screens = {
   Home: {
@@ -20,6 +20,6 @@ const screens = {
   }
 }
 
-const MapStack = createStackNavigator({screens});
+const MapStack = createStackNavigator({ screens })
 
-export default NavigationContainer(MapStack);
+export default NavigationContainer(MapStack)

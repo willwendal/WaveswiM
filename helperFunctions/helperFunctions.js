@@ -1,14 +1,15 @@
 const dataAverager = (item) => {
-  let average = 0;
-  let count = 0;
+  let average = 0
+  let count = 0
 
   item.forEach((hourlyData) => {
-  average += hourlyData.visibility.sg,
-  count++
+    average += hourlyData.visibility.sg,
+    count++
   })
 
-  average = average / count;
-  return average;
-};
+  average = average / count
+  average = average.toFixed(2);
+  return { average }
+}
 
-export { dataAverager };
+export { dataAverager }

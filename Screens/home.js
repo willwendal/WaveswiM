@@ -1,37 +1,35 @@
-import React from 'react';
-import { Pressable, Button, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import React from 'react'
+import { Pressable, Button, StyleSheet, Text, View, ImageBackground } from 'react-native'
 
-export default function Home({ navigation }) {
+export default function Home ({ navigation }) {
+  const onPressHandler = () => {
+    navigation.navigate('Map')
+  }
 
-const onPressHandler = () => {
-  navigation.navigate("Map");
-}
-  
   return (
-  
+
     <View style={styles.container}>
       <ImageBackground
         source={require('../assets/waveswim_background.png')}
-        style={{width: '100%', height: '100%'}}
+        style={{ width: '100%', height: '100%' }}
       >
-      
-      <View style={styles.header}>
-      <Text style={{fontSize: 40, color: 'white'}}>Wave swiM</Text>
-      </View>
-      <View style={styles.button}>
-        <Pressable>
-          <Button 
-            style={styles.button}
-            title={ 'Let\'s Go' } 
-            onPress={ onPressHandler }
-          />
-        </Pressable> 
-      </View>
-      </ImageBackground>
-    </View> 
-    
 
-  );
+        <View style={styles.header}>
+          <Text style={{ fontSize: 40, color: 'white' }}>Wave swiM</Text>
+        </View>
+        <View style={styles.button}>
+          <Pressable>
+            <Button
+              style={styles.button}
+              title={'Let\'s Go'}
+              onPress={onPressHandler}
+            />
+          </Pressable>
+        </View>
+      </ImageBackground>
+    </View>
+
+  )
 }
 
 const styles = StyleSheet.create({
@@ -39,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f1faee',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   button: {
     alignItems: 'center',
@@ -47,6 +45,6 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: 100
   }
-});
+})
