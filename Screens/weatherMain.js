@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Pressable, FlatList, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { Pressable, FlatList, StyleSheet, Text, View, ImageBackground, ScrollView } from 'react-native';
 
 const moment = require('moment');
 
@@ -25,7 +25,8 @@ export default function WeatherMain({ navigation }) {
   }
   
   return (
-  
+    
+    <ScrollView>
     <View style={styles.container} >
       <ImageBackground
         source={require('../assets/waveswim_background.png')}
@@ -36,19 +37,21 @@ export default function WeatherMain({ navigation }) {
             28°C
           </Text>
       <View style={styles.weatherBar}>
-        <View style={styles.weatherBarLeft}>
-          {days.map((day, index) => {
-          return <Pressable>
-                <Text style={styles.weatherBarText}
-                    key={index}
-                    onPress={onPressHandler}
-                >
-                  {day}
-                </Text>
-                </Pressable>
-          })}
-        </View>
-        <View>
+        
+          <View style={styles.weatherBarLeft}>
+            {days.map((day, index) => {
+            return <Pressable>
+                  <Text style={styles.weatherBarText}
+                      key={index}
+                      onPress={onPressHandler}
+                  >
+                    {day}
+                  </Text>
+                  </Pressable>
+            })}
+          </View>
+        
+      <View>
           <FlatList
             
           />   
@@ -56,6 +59,7 @@ export default function WeatherMain({ navigation }) {
       </View>
       </ImageBackground>
     </View> 
+    </ScrollView>
   );
 }
 
@@ -91,13 +95,6 @@ const styles = StyleSheet.create({
     color: 'white',
   }
 });
-
-
-// const renderItem = ({ item, index }) => {
-
-  //   return  <Image key={index} style={styles.weatherBar} 
-  //           source={require('../assets/red_swimming_icon.png')} />    
-  // } 
 
 
 

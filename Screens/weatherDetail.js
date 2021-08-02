@@ -15,7 +15,14 @@ const API_URL = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng
 
 export default function WeatherDetail() {
 
-  const [marineWeather, setMarineWeather] = useState({});
+  const renderItem = ({ item, index }) => {
+
+    return <Text key={index} style={styles.weatherBar}>
+        hiiiiiii
+    </Text>
+  } 
+
+  const [marineWeather, setMarineWeather] = useState([]);
 
   useEffect(() => {
         
@@ -41,10 +48,20 @@ export default function WeatherDetail() {
         source={require('../assets/waveswim_background.png')}
         style={{width: '100%', height: '100%'}}
       > 
+      <View style={styles.weatherBar}>
       <View>
       <Text style={styles.header}>Barcelona
             28°C
           </Text>
+      </View>
+      <View>
+        <FlatList
+            style={styles.weatherBarRight} 
+            data={ marineWeather }
+            keyExtractor={(item) => item.time}
+            renderItem={ renderItem }
+          />  
+      </View>
       </View>
       </ImageBackground>
     </View> 
@@ -55,10 +72,8 @@ export default function WeatherDetail() {
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
-    backgroundColor: '#f1faee',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   header: {
     padding: 90,
@@ -66,14 +81,16 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 30,
   },
+  weatherBar: {
+    flexDirection:  'row',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  weatherBarRight: {
+    padding: 10,
+    alignSelf: 'flex-end',
+    marginRight: 20,
+    color: 'white',
+  },
 });
-
-
-{/* <FlatList
-            style={styles.weatherBarRight} 
-            data={ marineWeather }
-            keyExtractor={(item) => item.time}
-            renderItem={ renderItem }
-          />  */}
-
-          
