@@ -2,6 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View, ImageBackground } from 'react-native';
 import { dataAverager } from '../helperFunctions/helperFunctions';
+import { EXPO_APIKEY } from '@env';
+
 
 const lat = 41.376700;
 const lng = 2.193972;
@@ -19,13 +21,16 @@ export default function WeatherDetail() {
         
             fetch( API_URL, {
               headers: {
-                'Authorization': "703528bc-ead9-11eb-80d0-0242ac130002-7035292a-ead9-11eb-80d0-0242ac130002",
+                'Authorization': EXPO_APIKEY,
               }
             }
           )
             .then((response) => (response.json()))
-            .then((jsonData) => { console.log('function return', dataAverager(jsonData.hours)) })
-            .then((dataAveraged) => { console.log('-------', dataAveraged), setMarineWeather(averagedData) })
+            .then((jsonData) => { 
+              const dateAverage = dataAverager(jsonData.hours)  
+              console.log(dateAverage)
+              setMarineWeather(dateAverage)
+            })
             .catch((err) => {err.message})
           },[])
 

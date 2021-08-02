@@ -13,12 +13,13 @@ for (let i = 0; i <= daysRequired; i++) {
 
 export default function WeatherMain({ navigation }) {
 
-  const renderItem = ({ item }) => {
-
-    return  <Image style={styles.weatherBar} 
-            source={require('../assets/green swimming icon.png')} />    
-  } 
-
+  // const swimIcon = [swimIcon, setSwimIcon] = useState([
+  //   require('../assets/green_swimming_icon.png'),
+  //   require('../assets/orange_swimming_icon.png'),
+  //   require('../assets/red_swimming_icon.png')
+  // ]);
+  
+  
   const onPressHandler = () => {
     navigation.navigate("WeatherDetail");
   }
@@ -49,9 +50,7 @@ export default function WeatherMain({ navigation }) {
         </View>
         <View>
           <FlatList
-            style={styles.weatherBarRight} 
-            keyExtractor={(item) => item.time}
-            renderItem={ renderItem }
+            
           />   
         </View>
       </View>
@@ -94,6 +93,11 @@ const styles = StyleSheet.create({
 });
 
 
+// const renderItem = ({ item, index }) => {
+
+  //   return  <Image key={index} style={styles.weatherBar} 
+  //           source={require('../assets/red_swimming_icon.png')} />    
+  // } 
 
 
 
