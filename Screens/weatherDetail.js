@@ -136,9 +136,11 @@ const styles = StyleSheet.create({
   weatherKey: {
     padding: 20,
     color: 'white',
+    fontFamily: 'Montserrat-Regular'
   },
   weatherValue: {
-    padding: 20,
+    padding: 24,
     color: 'white', 
+    fontFamily: 'Montserrat-Regular'
   },
 })

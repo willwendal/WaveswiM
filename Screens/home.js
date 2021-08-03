@@ -1,11 +1,21 @@
-import React from 'react'
-import { Pressable, Button, StyleSheet, Text, View, ImageBackground } from 'react-native'
+import React from 'react';
+import { Pressable, Button, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 export default function Home ({ navigation }) {
+
+  let [fontsLoaded] = useFonts({
+    'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+  });
+  
   const onPressHandler = () => {
     navigation.navigate('Map')
   }
 
+  if (!fontsLoaded) {
+    return <AppLoading />
+  } else {
   return (
 
     <View style={styles.container}>
@@ -15,7 +25,7 @@ export default function Home ({ navigation }) {
       >
 
         <View style={styles.header}>
-          <Text style={{ fontSize: 40, color: 'white' }}>Wave swiM</Text>
+          <Text style={styles.title}>Wave swiM</Text>
         </View>
         <View style={styles.button}>
           <Pressable>
@@ -30,7 +40,9 @@ export default function Home ({ navigation }) {
     </View>
 
   )
+  }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -41,10 +53,16 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    marginTop: 350
+    marginTop: 350,
+    fontFamily: 'Montserrat-Regular'
   },
   header: {
     alignItems: 'center',
     marginTop: 100
+  },
+  title: {
+    fontSize: 40,
+    color: 'white',
+    fontFamily: 'Montserrat-Regular'
   }
 })

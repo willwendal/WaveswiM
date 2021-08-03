@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Pressable, FlatList, StyleSheet, Text, View, ImageBackground, ScrollView } from 'react-native';
+import { Pressable, FlatList, StyleSheet, Text, View, ImageBackground, ScrollView, VirtualizedList } from 'react-native';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -25,7 +25,6 @@ export default function WeatherMain ({ navigation }) {
   }
 
   return (
-
     <ScrollView>
       <View style={styles.container}>
         <ImageBackground
@@ -56,7 +55,7 @@ export default function WeatherMain ({ navigation }) {
             </View>
 
             <View>
-              <FlatList />
+              
             </View>
           </View>
         </ImageBackground>
@@ -74,7 +73,8 @@ const styles = StyleSheet.create({
     padding: 90,
     textAlign: 'center',
     color: 'white',
-    fontSize: 30
+    fontSize: 30,
+    fontFamily: 'Montserrat-Regular'
   },
   weatherBar: {
     flexDirection: 'row',
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
   },
   weatherBarText: {
     margin: 20,
-    color: 'white'
+    color: 'white',
+    fontFamily: 'Montserrat-Regular'
   }
 })
