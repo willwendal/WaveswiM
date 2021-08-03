@@ -34,7 +34,8 @@ export default function WeatherMain ({ navigation }) {
         >
 
           <Text style={styles.header}>Barcelona
-            28°C
+            28°C {'\n'}
+            __________ 
           </Text>
           <View style={styles.weatherBar}>
 

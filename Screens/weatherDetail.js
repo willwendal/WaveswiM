@@ -17,16 +17,17 @@ const keyGenerator = uuidv4().toString();
 
 export default function WeatherDetail () {
   const renderItem = ({ item }) => {
-   return  (
+  return  (
+
       <View keyExtractor={keyGenerator} >
-        <Text style={styles.weatherBarRight}> {item.averageVis} </Text>
-        <Text style={styles.weatherBarRight}> {item.averageWaterTemp} </Text>
-        <Text style={styles.weatherBarRight}> {item.averageCurrentDirection} </Text>
-        <Text style={styles.weatherBarRight}> {item.averageCurrentSpeed} </Text>
-        <Text style={styles.weatherBarRight}> {item.averageSwellHeight} </Text>
-        <Text style={styles.weatherBarRight}> {item.averageSwellPeriod} </Text>
-        <Text style={styles.weatherBarRight}> {item.averageSwellDirection} </Text>
-        <Text style={styles.weatherBarRight}> {item.averageCloudCover} </Text>
+        <Text style={styles.weatherValue}> {item.averageVis} </Text>
+        <Text style={styles.weatherValue}> {item.averageWaterTemp} </Text>
+        <Text style={styles.weatherValue}> {item.averageCurrentDirection} </Text>
+        <Text style={styles.weatherValue}> {item.averageCurrentSpeed} </Text>
+        <Text style={styles.weatherValue}> {item.averageSwellHeight} </Text>
+        <Text style={styles.weatherValue}> {item.averageSwellPeriod} </Text>
+        <Text style={styles.weatherValue}> {item.averageSwellDirection} </Text>
+        <Text style={styles.weatherValue}> {item.averageCloudCover} </Text>
       </View>
     )
   }
@@ -50,77 +51,94 @@ export default function WeatherDetail () {
 
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../assets/waveswim_background.png')}
-        style={{ width: '100%', height: '100%' }}
-      >
-        <View style={styles.weatherBar}>
-          <View>
-            <Text style={styles.header}>Barcelona
-              28°C
-            </Text>
-          </View>
+      
+  <View style={styles.container}>
+    <ImageBackground
+      source={require('../assets/waveswim_background.png')}
+        style={styles.image}
+        resizeMode='cover'
+
+    >
+            
+    <Text style={styles.header}>
+      Barcelona
+      28°C {'\n'}
+      __________ 
+      
+    </Text>
+
+    <View style={styles.containerWrapper}>
+      <View style={styles.containerOne}>
+      
+        <Text style={styles.weatherKey}>Visibility</Text>
+        <Text style={styles.weatherKey}>Water Temperature</Text>
+        <Text style={styles.weatherKey}>Current Direction</Text>
+        <Text style={styles.weatherKey}>Current Speed</Text>
+        <Text style={styles.weatherKey}>Swell Height</Text>
+        <Text style={styles.weatherKey}>Swell Period</Text>
+        <Text style={styles.weatherKey}>Swell Direction</Text>
+        <Text style={styles.weatherKey}>Cloud Cover</Text>
+          
+      </View> 
         
-        <View >
-          <Text style={styles.weatherBarLeft}>Visibility</Text>
-          <Text style={styles.weatherBarLeft}>Water Temperature</Text>
-          <Text style={styles.weatherBarLeft}>Current Direction</Text>
-          <Text style={styles.weatherBarLeft}>Current Speed</Text>
-          <Text style={styles.weatherBarLeft}>Swell Height</Text>
-          <Text style={styles.weatherBarLeft}>Swell Period</Text>
-          <Text style={styles.weatherBarLeft}>Swell Direction</Text>
-          <Text style={styles.weatherBarLeft}>Cloud Cover</Text>
-        </View>
+      <View style={styles.containerTwo} >
         
-        <View style={styles.weatherBarRight}>
         <FlatList
           data={marineWeather}
           keyExtractor={(item) => item}
           renderItem={renderItem}
-        />
-        </View>
-        </View>
-      </ImageBackground>
-    </View>
+          
+        /> 
+          
+      </View>    
+
+    </View>  
+        
+    </ImageBackground>    
+  </View>
+      
 
   )
 }
 
 const styles = StyleSheet.create({
+  
   container: {
-    display: 'flex',
     flex: 1,
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+    flexDirection: 'column'
   },
   header: {
     padding: 90,
     textAlign: 'center',
     color: 'white',
-    fontSize: 30
+    fontSize: 30,
   },
-  weatherBar: {
+  containerWrapper: {
     flexDirection: 'row',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between'
-
+    flex: 1,
   },
-  weatherBarLeft: {
-    padding: 15,
-    alignSelf: 'flex-start',
-    marginTop: 35,
-    color: 'white'
+  containerOne: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    marginLeft: 20,
   },
-  weatherBarRight: {
-    padding: 12,
-    alignSelf: 'flex-end',
+  containerTwo: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    marginRight: 20,
+  },
+  weatherKey: {
+    padding: 20,
     color: 'white',
-    marginTop: 18,
-    marginBottom: 18,
-    alignSelf: 'baseline'
-  
   },
-  weatherBarLeftThree: {
-    marginTop: 10
-  }
+  weatherValue: {
+    padding: 20,
+    color: 'white', 
+  },
 })
