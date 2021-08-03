@@ -32,7 +32,7 @@ export default function WeatherMain ({ navigation }) {
 
           <Text style={styles.header}>Barcelona
             28°C {'\n'}
-            __________
+            __________ 
           </Text>
 
           <View style={styles.containerWrapper}>
@@ -53,13 +53,13 @@ export default function WeatherMain ({ navigation }) {
               })}
             </View>
             <View style={styles.containerTwo}>
-              <FontAwesome5 name='swimmer' style={styles.icon} />
-              <FontAwesome5 name='swimmer' style={styles.icon} />
-              <FontAwesome5 name='swimmer' style={styles.icon} />
-              <FontAwesome5 name='swimmer' style={styles.icon} />
-              <FontAwesome5 name='swimmer' style={styles.icon} />
-              <FontAwesome5 name='swimmer' style={styles.icon} />
-              <FontAwesome5 name='swimmer' style={styles.icon} />
+              <FontAwesome5 name='swimmer' style={styles.icon} size={30}/>
+              <FontAwesome5 name='swimmer' style={styles.icon} size={30}/>
+              <FontAwesome5 name='swimmer' style={styles.icon} size={30}/>
+              <FontAwesome5 name='swimmer' style={styles.icon} size={30}/>
+              <FontAwesome5 name='swimmer' style={styles.icon} size={30}/>
+              <FontAwesome5 name='swimmer' style={styles.icon} size={30}/>
+              <FontAwesome5 name='swimmer' style={styles.icon} size={30}/>
             </View>
 
           </View>
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 30,
-    fontFamily: 'Montserrat-Regular'
+    fontFamily: 'Montserrat-Medium'
   },
   containerWrapper: {
     flexDirection: 'row',
@@ -93,6 +93,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
+    marginLeft: 10,
+    padding: 10
   },
   containerTwo: {
     flex: 1,
@@ -100,24 +102,23 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   weatherKey: {
-    padding: 18,
+    padding: 12,
+    marginTop: 10,
     color: 'white',
-    fontFamily: 'Montserrat-Regular',
-    fontSize: 12,
+    fontFamily: 'Montserrat-Bold',
+    fontSize: 15,
   },
   weatherValue: {
     padding: 10,
     color: 'white',
-    fontFamily: 'Montserrat-Regular',
     marginTop: 7
   },
   icon: {
-    padding: 18,
+    padding: 20,
     alignItems: 'center',
     color: 'lightgreen',
-    fontFamily: 'Montserrat-Regular',
-    marginTop: 0,
     marginLeft: 50,
-    marginBottom: 5
+    marginTop: 4
+    
   }
 })
