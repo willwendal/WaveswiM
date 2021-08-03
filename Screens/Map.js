@@ -5,17 +5,15 @@ import { Pressable, Button, StyleSheet, Text, View, Dimensions } from 'react-nat
 export default function Map ({ navigation }) {
   // const [isShowing, setIsShowing] = useState(false)
 
- 
   const onPressHandler = () => {
     navigation.navigate('WeatherMain')
   }
 
   const toggleShow = () => {
-    
     if (styles.marker.opacity === 0) {
-      styles.marker.opacity = 1;
+      styles.marker.opacity = 1
     } else {
-      styles.marker.opacity = 0;
+      styles.marker.opacity = 0
     }
   }
 
@@ -30,7 +28,7 @@ export default function Map ({ navigation }) {
             latitude: 41.253009,
             longitude: 2.189291,
             latitudeDelta: 15.15108,
-            longitudeDelta: 15.1215,
+            longitudeDelta: 15.1215
           }}
         >
           <Marker

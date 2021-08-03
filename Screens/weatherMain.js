@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Pressable, StyleSheet, Text, View, ImageBackground, ScrollView, Image } from 'react-native';
-import { Icon } from 'react-native-elements';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import 'react-native-get-random-values';
-import { v4 as uuidv4 } from 'uuid';
+import { Pressable, StyleSheet, Text, View, ImageBackground, ScrollView, Image } from 'react-native'
+import { Icon } from 'react-native-elements'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import 'react-native-get-random-values'
+import { v4 as uuidv4 } from 'uuid'
+import { BackgroundImage } from 'react-native-elements/dist/config'
 
-const keyGenerator = uuidv4().toString();
+const keyGenerator = uuidv4().toString()
 const moment = require('moment')
 
 const days = []
@@ -16,31 +17,32 @@ for (let i = 0; i <= daysRequired; i++) {
 }
 
 export default function WeatherMain ({ navigation }) {
-
   const onPressHandler = () => {
     navigation.navigate('WeatherDetail')
   }
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <ImageBackground
-          source={require('../assets/waveswim_background.png')}
-          style={{ width: '100%', height: '100%' }}
-        >
+    <View style={styles.container}>
+      <ImageBackground
+        source={require('../assets/waveswim_background.png')}
+        style={styles.image}
+        resizeMode='cover'
+      >
+        <ScrollView>
 
           <Text style={styles.header}>Barcelona
             28°C {'\n'}
-            __________ 
+            __________
           </Text>
-          <View style={styles.weatherBar}>
 
-            <View style={styles.weatherBarLeft}>
+          <View style={styles.containerWrapper}>
+
+            <View style={styles.containerOne}>
               {days.map((day, index) => {
                 return (
                   <Pressable>
                     <Text
-                      style={styles.weatherBarText}
+                      style={styles.weatherKey}
                       key={keyGenerator}
                       onPress={onPressHandler}
                     >
@@ -50,23 +52,31 @@ export default function WeatherMain ({ navigation }) {
                 )
               })}
             </View>
-            <View style={styles.icon}>
-              <FontAwesome5 name={'swimmer'} style={{color: 'lightgreen', width: '100%', height: '100%', display: 'flex', flexDirection: 'column'}}/>
+            <View style={styles.containerTwo}>
+              <FontAwesome5 name='swimmer' style={styles.icon} />
+              <FontAwesome5 name='swimmer' style={styles.icon} />
+              <FontAwesome5 name='swimmer' style={styles.icon} />
+              <FontAwesome5 name='swimmer' style={styles.icon} />
+              <FontAwesome5 name='swimmer' style={styles.icon} />
+              <FontAwesome5 name='swimmer' style={styles.icon} />
+              <FontAwesome5 name='swimmer' style={styles.icon} />
             </View>
-            <View style={styles.icon2}>
-              <FontAwesome5 name={'swimmer'} style={{color: 'lightgreen', width: '100%', height: '100%', display: 'flex', flexDirection: 'column'}}/>
-            </View>
+
           </View>
-        </ImageBackground>
-      </View>
-    </ScrollView>
+        </ScrollView>
+      </ImageBackground>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
     flex: 1
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+    flexDirection: 'column'
   },
   header: {
     padding: 90,
@@ -75,33 +85,39 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: 'Montserrat-Regular'
   },
-  weatherBar: {
+  containerWrapper: {
     flexDirection: 'row',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between'
+    flex: 1
   },
-  weatherBarLeft: {
-    padding: 5,
-    marginLeft: 10,
-    alignSelf: 'flex-start'
+  containerOne: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
-  weatherBarRight: {
-    padding: 10,
-    alignSelf: 'flex-end',
-    marginRight: 20
+  containerTwo: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
-  weatherBarText: {
-    margin: 20,
+  weatherKey: {
+    padding: 18,
     color: 'white',
-    fontFamily: 'Montserrat-Regular'
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 12,
+  },
+  weatherValue: {
+    padding: 10,
+    color: 'white',
+    fontFamily: 'Montserrat-Regular',
+    marginTop: 7
   },
   icon: {
-    marginTop: 30,
-    marginLeft: 52
-  },
-  icon2: {
-    marginTop: 90,
-    marginRight: 50
+    padding: 18,
+    alignItems: 'center',
+    color: 'lightgreen',
+    fontFamily: 'Montserrat-Regular',
+    marginTop: 0,
+    marginLeft: 50,
+    marginBottom: 5
   }
 })
