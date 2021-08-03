@@ -20,14 +20,14 @@ export default function WeatherDetail () {
     return (
 
       <View keyExtractor={keyGenerator}>
-        <Text style={styles.weatherValue}> {item.averageVis} </Text>
-        <Text style={styles.weatherValue}> {item.averageWaterTemp} </Text>
-        <Text style={styles.weatherValue}> {item.averageCurrentDirection} </Text>
-        <Text style={styles.weatherValue}> {item.averageCurrentSpeed} </Text>
-        <Text style={styles.weatherValue}> {item.averageSwellHeight} </Text>
-        <Text style={styles.weatherValue}> {item.averageSwellPeriod} </Text>
-        <Text style={styles.weatherValue}> {item.averageSwellDirection} </Text>
-        <Text style={styles.weatherValue}> {item.averageCloudCover} </Text>
+        <Text style={styles.weatherValue}> {item.averageVis + '  km'} </Text>
+        <Text style={styles.weatherValue}> {item.averageWaterTemp + '  °C'}{'\n'} </Text>
+        <Text style={styles.weatherValue}> {item.averageCurrentDirection + '  0°'}  </Text>
+        <Text style={styles.weatherValue}> {item.averageCurrentSpeed + '  m/s'} </Text>
+        <Text style={styles.weatherValue}> {item.averageSwellHeight + '  m'} </Text>
+        <Text style={styles.weatherValue}> {item.averageSwellPeriod + '  secs'} </Text>
+        <Text style={styles.weatherValue}> {item.averageSwellDirection + '  0°'} </Text>
+        <Text style={styles.weatherValue}> {item.averageCloudCover + '  %'} </Text>
       </View>
     )
   }
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 30,
-    fontFamily: 'Montserrat-Regular'
+    fontFamily: 'Montserrat-Medium'
   },
   containerWrapper: {
     flexDirection: 'row',
@@ -135,12 +135,14 @@ const styles = StyleSheet.create({
   weatherKey: {
     padding: 20,
     color: 'white',
-    fontFamily: 'Montserrat-Regular'
+    fontFamily: 'Montserrat-Bold'
   },
   weatherValue: {
     padding: 20,
     color: 'white',
-    fontFamily: 'Montserrat-Regular',
-    marginTop: 7
+    fontFamily: 'Montserrat-Bold',
+    // marginTop: 3,
+    marginBottom: 3,
+    fontSize: 14
   }
 })
