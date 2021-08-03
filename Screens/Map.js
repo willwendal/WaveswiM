@@ -3,21 +3,20 @@ import MapView, { Marker } from 'react-native-maps'
 import { Pressable, Button, StyleSheet, Text, View, Dimensions } from 'react-native'
 
 export default function Map ({ navigation }) {
-  const [isShowing, setIsShowing] = useState(false)
+  // const [isShowing, setIsShowing] = useState(false)
 
-  const togglePin = () => {
-    isShowing ? styles.marker.opacity = 1 : styles.marker.opacity = 0
-    setIsShowing(true)
-  }
-
-  // return (
-  //     <Marker>
-  //         {isShowing ? styles.marker /*opactiy 0*/ : styles.marker /*opacity 100 */ }
-  //     </Marker>
-  //     );
-
+ 
   const onPressHandler = () => {
     navigation.navigate('WeatherMain')
+  }
+
+  const toggleShow = () => {
+    
+    if (styles.marker.opacity === 0) {
+      styles.marker.opacity = 1;
+    } else {
+      styles.marker.opacity = 0;
+    }
   }
 
   return (
@@ -26,11 +25,12 @@ export default function Map ({ navigation }) {
 
         <MapView
           style={styles.map}
+          onPress={toggleShow}
           initialRegion={{
             latitude: 41.253009,
             longitude: 2.189291,
-            latitudeDelta: 3.15108,
-            longitudeDelta: 3.1215
+            latitudeDelta: 15.15108,
+            longitudeDelta: 15.1215,
           }}
         >
           <Marker

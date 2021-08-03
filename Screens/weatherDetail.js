@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import React, { useState, useEffect } from 'react';
-import { FlatList, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { FlatList, StyleSheet, Text, View, ImageBackground, ScrollView } from 'react-native';
 import { dataAverager } from '../helperFunctions/helperFunctions';
 import { EXPO_APIKEY } from '@env';
 import 'react-native-get-random-values';
@@ -51,14 +51,15 @@ export default function WeatherDetail () {
 
 
   return (
-      
-  <View style={styles.container}>
+    
+    <View style={styles.container}>
     <ImageBackground
       source={require('../assets/waveswim_background.png')}
-        style={styles.image}
-        resizeMode='cover'
-
-    >
+      style={styles.image}
+      resizeMode='cover'
+      
+      >
+    <ScrollView>
             
     <Text style={styles.header}>
       Barcelona
@@ -66,7 +67,6 @@ export default function WeatherDetail () {
       __________ 
       
     </Text>
-
     <View style={styles.containerWrapper}>
       <View style={styles.containerOne}>
       
@@ -80,7 +80,7 @@ export default function WeatherDetail () {
         <Text style={styles.weatherKey}>Cloud Cover</Text>
           
       </View> 
-        
+
       <View style={styles.containerTwo} >
         
         <FlatList
@@ -88,12 +88,14 @@ export default function WeatherDetail () {
           keyExtractor={(item) => item}
           renderItem={renderItem}
           
-        /> 
+          /> 
           
       </View>    
 
     </View>  
         
+    </ScrollView>
+
     </ImageBackground>    
   </View>
       
@@ -116,6 +118,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 30,
+    fontFamily: 'Montserrat-Regular'
   },
   containerWrapper: {
     flexDirection: 'row',
@@ -139,8 +142,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Regular'
   },
   weatherValue: {
-    padding: 24,
+    padding: 20,
     color: 'white', 
-    fontFamily: 'Montserrat-Regular'
+    fontFamily: 'Montserrat-Regular',
+    marginTop: 7
   },
 })

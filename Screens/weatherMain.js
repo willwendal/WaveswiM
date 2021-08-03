@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Pressable, FlatList, StyleSheet, Text, View, ImageBackground, ScrollView, VirtualizedList } from 'react-native';
+import { Pressable, StyleSheet, Text, View, ImageBackground, ScrollView, Image } from 'react-native';
+import { Icon } from 'react-native-elements';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -14,11 +16,6 @@ for (let i = 0; i <= daysRequired; i++) {
 }
 
 export default function WeatherMain ({ navigation }) {
-  // const swimIcon = [swimIcon, setSwimIcon] = useState([
-  //   require('../assets/green_swimming_icon.png'),
-  //   require('../assets/orange_swimming_icon.png'),
-  //   require('../assets/red_swimming_icon.png')
-  // ]);
 
   const onPressHandler = () => {
     navigation.navigate('WeatherDetail')
@@ -53,9 +50,11 @@ export default function WeatherMain ({ navigation }) {
                 )
               })}
             </View>
-
-            <View>
-              
+            <View style={styles.icon}>
+              <FontAwesome5 name={'swimmer'} style={{color: 'lightgreen', width: '100%', height: '100%', display: 'flex', flexDirection: 'column'}}/>
+            </View>
+            <View style={styles.icon2}>
+              <FontAwesome5 name={'swimmer'} style={{color: 'lightgreen', width: '100%', height: '100%', display: 'flex', flexDirection: 'column'}}/>
             </View>
           </View>
         </ImageBackground>
@@ -96,5 +95,13 @@ const styles = StyleSheet.create({
     margin: 20,
     color: 'white',
     fontFamily: 'Montserrat-Regular'
+  },
+  icon: {
+    marginTop: 30,
+    marginLeft: 52
+  },
+  icon2: {
+    marginTop: 90,
+    marginRight: 50
   }
 })

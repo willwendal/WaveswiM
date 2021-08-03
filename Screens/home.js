@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     marginTop: 350,
-    fontFamily: 'Montserrat-Regular'
+    fontFamily: 'Montserrat-Regular',
+    // backgroundColor: "#009688"
   },
   header: {
     alignItems: 'center',
