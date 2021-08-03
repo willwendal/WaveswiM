@@ -18,15 +18,15 @@ const keyGenerator = uuidv4().toString();
 export default function WeatherDetail () {
   const renderItem = ({ item }) => {
    return  (
-      <View keyExtractor={keyGenerator}>
-        <Text> {item.averageVis} </Text>
-        <Text> {item.averageWaterTemp} </Text>
-        <Text> {item.averageCurrentDirection} </Text>
-        <Text> {item.averageCurrentSpeed} </Text>
-        <Text> {item.averageSwellHeight} </Text>
-        <Text> {item.averageSwellPeriod} </Text>
-        <Text> {item.averageSwellDirection} </Text>
-        <Text> {item.averageCloudCover} </Text>
+      <View keyExtractor={keyGenerator} >
+        <Text style={styles.weatherBarRight}> {item.averageVis} </Text>
+        <Text style={styles.weatherBarRight}> {item.averageWaterTemp} </Text>
+        <Text style={styles.weatherBarRight}> {item.averageCurrentDirection} </Text>
+        <Text style={styles.weatherBarRight}> {item.averageCurrentSpeed} </Text>
+        <Text style={styles.weatherBarRight}> {item.averageSwellHeight} </Text>
+        <Text style={styles.weatherBarRight}> {item.averageSwellPeriod} </Text>
+        <Text style={styles.weatherBarRight}> {item.averageSwellDirection} </Text>
+        <Text style={styles.weatherBarRight}> {item.averageCloudCover} </Text>
       </View>
     )
   }
@@ -61,13 +61,25 @@ export default function WeatherDetail () {
               28°C
             </Text>
           </View>
+        
+        <View >
+          <Text style={styles.weatherBarLeft}>Visibility</Text>
+          <Text style={styles.weatherBarLeft}>Water Temperature</Text>
+          <Text style={styles.weatherBarLeft}>Current Direction</Text>
+          <Text style={styles.weatherBarLeft}>Current Speed</Text>
+          <Text style={styles.weatherBarLeft}>Swell Height</Text>
+          <Text style={styles.weatherBarLeft}>Swell Period</Text>
+          <Text style={styles.weatherBarLeft}>Swell Direction</Text>
+          <Text style={styles.weatherBarLeft}>Cloud Cover</Text>
         </View>
+        
         <View style={styles.weatherBarRight}>
         <FlatList
           data={marineWeather}
           keyExtractor={(item) => item}
           renderItem={renderItem}
         />
+        </View>
         </View>
       </ImageBackground>
     </View>
@@ -78,7 +90,7 @@ export default function WeatherDetail () {
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
-    flex: 1
+    flex: 1,
   },
   header: {
     padding: 90,
@@ -91,15 +103,24 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between'
+
+  },
+  weatherBarLeft: {
+    padding: 15,
+    alignSelf: 'flex-start',
+    marginTop: 35,
+    color: 'white'
   },
   weatherBarRight: {
-    padding: 10,
+    padding: 12,
     alignSelf: 'flex-end',
-    marginRight: 20,
-    color: 'white'
+    color: 'white',
+    marginTop: 18,
+    marginBottom: 18,
+    alignSelf: 'baseline'
+  
   },
-  weatherBarText: {
-    margin: 20,
-    color: 'white'
+  weatherBarLeftThree: {
+    marginTop: 10
   }
 })
